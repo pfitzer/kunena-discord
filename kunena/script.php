@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @package   kunena-discord
  * @since     1.0.0
  */
-class plgSystemKunenaDisocord
+class plgKunenaDisocord
 {
 	/**
 	 * Constructor

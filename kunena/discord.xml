@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" version="3.8" group="kunena" method="upgrade">
-	<name>PLG_KUNENA-DISCORD</name>
+	<name>PLG_KUNENA_DISCORD</name>
 	<creationDate>13.11.19</creationDate>
 	<author>Michael Pfister</author>
 	<authorEmail>michael@mp-development.de</authorEmail>
 	<authorUrl>http://www.mp-development.de</authorUrl>
-	<copyright>A copyright</copyright>
+	<copyright>Michael Pfister</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>1.0</version>
-	<description>PLG_KUNENA-DISCORD_XML_DESCRIPTION</description>
+	<description>PLG_KUNENA_DISCORD_XML_DESCRIPTION</description>
 
 	<!-- Scripts to run on installation -->
 	<scriptfile></scriptfile>
 
 	<!-- Language files -->
 	<languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.plg_system_kunena-discord.ini</language>
-		<language tag="en-GB">en-GB/en-GB.plg_system_kunena-discord.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_kunena_discord.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_kunena_discord.sys.ini</language>
+		<language tag="de-DE">de-DE/de-DE.plg_kunena_discord.ini</language>
+		<language tag="de-DE">de-DE/de-DE.plg_kunena_discord.sys.ini</language>
 	</languages>
 
 	<!-- Plugin files -->
@@ -32,9 +34,9 @@
 				<field
 					name="webhook"
 					type="url"
-					default="42"
-					label="PLG_KUNENA-DISCORD_WEBHOOK_LABEL"
-					description="PLG_KUNENA-DISCORD_WEBHOOK_DESCRIPTION"
+					default=""
+					label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+					description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
 				/>
 			</fieldset>
 		</fields>

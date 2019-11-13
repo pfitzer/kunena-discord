@@ -9,8 +9,15 @@
 
 defined('_JEXEC') or die();
 
+use Joomla\CMS\Http\Http;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Date\Date;
 
+/**
+ * @package     ${NAMESPACE}
+ *
+ * @since version
+ */
 class KunenaDiscord extends KunenaActivity
 {
 
@@ -22,23 +29,19 @@ class KunenaDiscord extends KunenaActivity
     private $webhook= null;
 
     /**
-     * KunenaActivityCommunity constructor.
-     *
-     * @param $params
-     *
-     * @since version
+     * KunenaDiscord constructor.
+     * @param $webhook
      */
     public function __construct($webhook)
     {
         $this->webhook = $webhook;
         $this->lang = JFactory::getLanguage();
-        $this->lang->load('plg_kunena-discord', JPATH_ADMINISTRATOR);
+        $this->lang->load('plg_kunena_discord', JPATH_ADMINISTRATOR);
     }
 
     /**
-     * @param KunenaForumMessage $message
+     * @param string $message
      *
-     * @return bool|void
      *
      * @since version
      */
@@ -46,15 +49,13 @@ class KunenaDiscord extends KunenaActivity
     {
         $this->_prepareAndSend(
             $message,
-            Text::_("PLG_KUNENA_PUSHALERT_REPLY_TITLE"),
-            Text::_("PLG_KUNENA_PUSHALERT_REPLY_MSG")
+            Text::_("PLG_KUNENA_DISCORD_MESSAGE_NEW")
         );
     }
 
     /**
-     * @param KunenaForumTopic $message
+     * @param string $message
      *
-     * @return bool|void
      *
      * @since version
      */
@@ -62,16 +63,16 @@ class KunenaDiscord extends KunenaActivity
     {
         $this->_prepareAndSend(
             $message,
-            Text::_("PLG_KUNENA_PUSHALERT_TOPIC_TITLE"),
-            Text::_("PLG_KUNENA_PUSHALERT_TOPIC_MSG")
+            Text::_("PLG_KUNENA_DISCORD_MESSAGE_NEW")
         );
     }
 
     /**
-     * @param KunenaDatabaseObject $message
+     * @param $message
      *
-     * @return boolean
-     * @since Kunena
+     * @return bool
+     *
+     * @since version
      */
     private function _checkPermissions($message)
     {
@@ -95,16 +96,19 @@ class KunenaDiscord extends KunenaActivity
     }
 
     /**
-     * @param $title
      * @param $pushMessage
      * @param $url
+     * @param $message
      *
      *
+     * @throws Exception
      * @since version
      */
-    private function _send_message($title, $pushMessage, $url)
+    private function _send_message($pushMessage, $url, $message)
     {
-        $content = Text::_('PLG_KUNENA-DISCORD_MESSAGE_NEW') . ' [hyperlink](' . $url . ')';
+        $app  = JFactory::getApplication();
+        $content = '**' . $pushMessage . '** *' . $message->subject . '* [Link](' . $url . ')';
+        $date = new Date('now');
         $hookObject = json_encode([
             /*
              * The general "message" shown above your embeds
@@ -113,118 +117,30 @@ class KunenaDiscord extends KunenaActivity
             /*
              * The username shown in the message
              */
-            "username" => "Forum",
+            "username" => $app->get('sitename'),
             /*
              * Whether or not to read the message in Text-to-speech
              */
-            "tts" => false,
-            /*
-             * An array of Embeds
-             */
-            "embeds" => [
-                /*
-                 * Our first embed
-                 */
-                [
-                    // Set the title for your embed
-                    "title" => "Google.com",
-
-                    // The type of your embed, will ALWAYS be "rich"
-                    "type" => "rich",
-
-                    // A description for your embed
-                    "description" => "",
-
-                    // The URL of where your title will be a link to
-                    "url" => "https://www.google.com/",
-
-                    /* A timestamp to be displayed below the embed, IE for when an an article was posted
-                     * This must be formatted as ISO8601
-                     */
-                    "timestamp" => "2018-03-10T19:15:45-05:00",
-
-                    // The integer color to be used on the left side of the embed
-                    "color" => hexdec( "FFFFFF" ),
-
-                    // Footer object
-                    "footer" => [
-                        "text" => "Google TM",
-                        "icon_url" => "https://pbs.twimg.com/profile_images/972154872261853184/RnOg6UyU_400x400.jpg"
-                    ],
-
-                    // Image object
-                    "image" => [
-                        "url" => "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-                    ],
-
-                    // Thumbnail object
-                    "thumbnail" => [
-                        "url" => "https://pbs.twimg.com/profile_images/972154872261853184/RnOg6UyU_400x400.jpg"
-                    ],
-
-                    // Author object
-                    "author" => [
-                        "name" => "Alphabet",
-                        "url" => "https://www.abc.xyz"
-                    ],
-
-                    // Field array of objects
-                    "fields" => [
-                        // Field 1
-                        [
-                            "name" => "Data A",
-                            "value" => "Value A",
-                            "inline" => false
-                        ],
-                        // Field 2
-                        [
-                            "name" => "Data B",
-                            "value" => "Value B",
-                            "inline" => true
-                        ],
-                        // Field 3
-                        [
-                            "name" => "Data C",
-                            "value" => "Value C",
-                            "inline" => true
-                        ]
-                    ]
-                ]
-            ]
-
+            "tts" => false
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 
-
-        $ch = curl_init();
-
-        curl_setopt_array( $ch, [
-            CURLOPT_URL => $this->webhook,
-            CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => $hookObject,
-            CURLOPT_HTTPHEADER => [
-                "Length" => strlen( $hookObject ),
-                "Content-Type" => "application/json"
-            ]
-        ]);
-
-        $response = curl_exec( $ch );
-        curl_close( $ch );
+        $request = new Http();
+        $request->post($this->webhook, $hookObject);
     }
 
     /**
-     * @param KunenaDatabaseObject $message
-     * @param string $translatedTitle
-     * @param string $translatedMsg
+     * @param $message
+     * @param $translatedMsg
      *
-     * @return void
+     *
+     * @since version
      */
-    private function _prepareAndSend($message, $translatedTitle, $translatedMsg)
+    private function _prepareAndSend($message, $translatedMsg)
     {
         if ($this->_checkPermissions($message)) {
-            $title = sprintf($translatedTitle, $message->name);
             $pushMessage = sprintf($translatedMsg, $message->subject);
-            $url = $message->getTopic()->getUrl();
-            $this->_send_message($title, $pushMessage, $url);
+            $url = JUri::base() . mb_substr($message->getTopic()->getUrl(), 1);
+            $this->_send_message($pushMessage, $url, $message);
         }
     }
 }

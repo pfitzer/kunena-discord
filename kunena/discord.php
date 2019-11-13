@@ -18,7 +18,7 @@ defined('_JEXEC') or die;
  * @package   kunena-discord
  * @since     1.0.0
  */
-class plgSystemKunenaDiscord extends CMSPlugin
+class plgKunenaDiscord extends CMSPlugin
 {
 	/**
 	 * Affects constructor behavior. If true, language files will be loaded automatically.
@@ -37,24 +37,23 @@ class plgSystemKunenaDiscord extends CMSPlugin
      */
     public function __construct($subject, array $config = array())
     {
+        parent::__construct($subject, $config);
         $this->webhook = $this->params->get('webhook');
         if (!$this->webhook) {
             throw new InvalidArgumentException("Webhook can`t be null. Please donfigure a webhhok.");
         }
-
-        parent::__construct($subject, $config);
     }
 
     /**
      * Get Kunena activity stream integration object.
      *
-     * @return \KunenaPushalert|null
+     * @return \KunenaDiscord|null
      * @since Kunena
      */
     public function onKunenaGetActivity()
     {
         require_once __DIR__ . "/push.php";
-        return new KunenaPushalert($this->webhook);
+        return new KunenaDiscord($this->webhook);
     }
 
 }
