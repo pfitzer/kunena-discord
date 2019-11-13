@@ -706,4 +706,4 @@
 /robots.txt.dist
 /web.config.txt
 
-!/.idea/
+/.idea/
