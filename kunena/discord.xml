@@ -7,7 +7,7 @@
 	<authorUrl>http://www.mp-development.de</authorUrl>
 	<copyright>Michael Pfister</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.0</version>
+	<version>1.0.1</version>
 	<description>PLG_KUNENA_DISCORD_XML_DESCRIPTION</description>
 
 	<!-- Scripts to run on installation -->
@@ -24,6 +24,9 @@
 	<!-- Plugin files -->
 	<files>
 		<filename plugin="discord">discord.php</filename>
+		<filename>push.php</filename>
+		<filename>script.php</filename>
+		<filename>index.html</filename>
 		<folder>language</folder>
 	</files>
 
