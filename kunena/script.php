@@ -3,7 +3,7 @@
  * @package    kunena-discord
  *
  * @author     michael <your@email.com>
- * @copyright  A copyright
+ * @copyright  Michael Pfister
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  * @link       http://your.url.com
  */
