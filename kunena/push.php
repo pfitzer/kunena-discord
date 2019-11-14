@@ -1,8 +1,9 @@
 <?php
 /**
- * @package     ${NAMESPACE}
+ * @package     kunena-discord
  * @subpackage
  *
+ * @author     michael <michael@mp-development.de>
  * @copyright   Michael Pfister
  * @license      GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -22,11 +23,10 @@ class KunenaDiscord extends KunenaActivity
 {
 
 
-
     /**
      * @var null
      */
-    private $webhook= null;
+    private $webhook = null;
 
     /**
      * KunenaDiscord constructor.
@@ -106,7 +106,7 @@ class KunenaDiscord extends KunenaActivity
      */
     private function _send_message($pushMessage, $url, $message)
     {
-        $app  = JFactory::getApplication();
+        $app = JFactory::getApplication();
         $content = '**' . $pushMessage . '** *' . $message->subject . '* [Link](' . $url . ')';
         $date = new Date('now');
         $hookObject = json_encode([
@@ -122,7 +122,7 @@ class KunenaDiscord extends KunenaActivity
              * Whether or not to read the message in Text-to-speech
              */
             "tts" => false
-        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
         $request = new Http();
         $request->post($this->webhook, $hookObject);

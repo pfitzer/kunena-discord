@@ -2,7 +2,7 @@
 /**
  * @package    kunena-discord
  *
- * @author     michael <your@email.com>
+ * @author     michael <michael@mp-development.de>
  * @copyright  Michael Pfister
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  * @link       https://github.com/pfitzer/kunena-discord
