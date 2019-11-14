@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updates>
+    <update>
+        <name>Kunena Discord</name>
+        <description>Kunena Plugin to push new entries to a Discord webhook.</description>
+        <element>discord</element>
+        <type>plugin</type>
+        <folder>kunena</folder>
+        <client>0</client>
+        <client_id>0</client_id>
+        <version>1.0.2</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/pfitzer/kunena-discord/archive/1.0.2.zip</downloadurl>
+        </downloads>
+        <tags><tag>stable</tag></tags>
+        <maintainer>Michael Pfister</maintainer>
+        <targetplatform name="joomla" version="3" />
+    </update>
+</updates>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" version="3.8" group="kunena" method="upgrade">
-	<name>PLG_KUNENA_DISCORD</name>
+	<name>Kunena Discord</name>
 	<creationDate>13.11.19</creationDate>
 	<author>Michael Pfister</author>
 	<authorEmail>michael@mp-development.de</authorEmail>
 	<authorUrl>http://www.mp-development.de</authorUrl>
 	<copyright>Michael Pfister</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<description>PLG_KUNENA_DISCORD_XML_DESCRIPTION</description>
 
 	<!-- Scripts to run on installation -->
@@ -44,4 +44,7 @@
 			</fieldset>
 		</fields>
 	</config>
+	<updateservers>
+		<server type="extension" priority="1" name="Kunena-Discord Update Site">https://raw.githubusercontent.com/pfitzer/kunena-discord/master/plg_kunenadiscord.xml</server>
+	</updateservers>
 </extension>

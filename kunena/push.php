@@ -139,7 +139,7 @@ class KunenaDiscord extends KunenaActivity
     {
         if ($this->_checkPermissions($message)) {
             $pushMessage = sprintf($translatedMsg, $message->subject);
-            $url = JUri::base() . mb_substr($message->getTopic()->getUrl(), 1);
+            $url = htmlspecialchars_decode(JUri::base() . mb_substr($message->getPermaUrl(), 1) . '#' . $message->id);
             $this->_send_message($pushMessage, $url, $message);
         }
     }
