@@ -10,10 +10,14 @@
         <client_id>0</client_id>
         <version>1.0.3</version>
         <downloads>
-            <downloadurl type="full" format="zip">https://github.com/pfitzer/kunena-discord/archive/1.0.3.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://github.com/pfitzer/kunena-discord/archive/1.0.3.zip
+            </downloadurl>
         </downloads>
-        <tags><tag>stable</tag></tags>
+        <tags>
+            <tag>stable</tag>
+        </tags>
         <maintainer>Michael Pfister</maintainer>
-        <targetplatform name="joomla" version="3" />
+        <targetplatform name="joomla" version="3"/>
+        <php_minimum>7</php_minimum>
     </update>
 </updates>
