@@ -9,6 +9,7 @@ See Discord [documentation](https://support.discordapp.com/hc/en-us/articles/228
 ###### available translations
 * englisch
 * german
+* spanish
 
 ###### LICENSE
 
