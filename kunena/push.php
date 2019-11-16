@@ -11,8 +11,6 @@
 defined('_JEXEC') or die();
 
 use Joomla\CMS\Http\Http;
-use Joomla\CMS\Language\Text;
-use Joomla\CMS\Date\Date;
 
 /**
  * @package     ${NAMESPACE}
@@ -29,50 +27,53 @@ class KunenaDiscord extends KunenaActivity
     private $webhook = null;
 
     /**
+     * @var \Joomla\CMS\Language\Language
+     */
+    private $lang;
+
+    /**
+     * @var \Joomla\CMS\Application\CMSApplication
+     */
+    private $app;
+
+    /**
      * KunenaDiscord constructor.
      * @param $webhook
+     * @throws Exception
      */
     public function __construct($webhook)
     {
         $this->webhook = $webhook;
         $this->lang = JFactory::getLanguage();
         $this->lang->load('plg_kunena_discord', JPATH_ADMINISTRATOR);
+        $this->app = JFactory::getApplication();
     }
 
     /**
-     * @param string $message
-     *
-     *
-     * @since version
+     * @param KunenaForumMessage $message
      */
     public function onAfterReply($message)
     {
         $this->_prepareAndSend(
             $message,
-            Text::_("PLG_KUNENA_DISCORD_MESSAGE_NEW")
+            JText::_("PLG_KUNENA_DISCORD_MESSAGE_NEW")
         );
     }
 
     /**
-     * @param string $message
-     *
-     *
-     * @since version
+     * @param KunenaForumMessage $message
      */
     public function onAfterPost($message)
     {
         $this->_prepareAndSend(
             $message,
-            Text::_("PLG_KUNENA_DISCORD_MESSAGE_NEW")
+            JText::_("PLG_KUNENA_DISCORD_MESSAGE_NEW")
         );
     }
 
     /**
-     * @param $message
-     *
+     * @param KunenaForumMessage $message
      * @return bool
-     *
-     * @since version
      */
     private function _checkPermissions($message)
     {
@@ -98,17 +99,11 @@ class KunenaDiscord extends KunenaActivity
     /**
      * @param $pushMessage
      * @param $url
-     * @param $message
-     *
-     *
-     * @throws Exception
-     * @since version
+     * @param KunenaForumMessage $message
      */
     private function _send_message($pushMessage, $url, $message)
     {
-        $app = JFactory::getApplication();
         $content = '**' . $pushMessage . '** *' . $message->subject . '* [Link](' . $url . ')';
-        $date = new Date('now');
         $hookObject = json_encode([
             /*
              * The general "message" shown above your embeds
@@ -117,7 +112,7 @@ class KunenaDiscord extends KunenaActivity
             /*
              * The username shown in the message
              */
-            "username" => $app->get('sitename'),
+            "username" => $this->app->get('sitename'),
             /*
              * Whether or not to read the message in Text-to-speech
              */
@@ -125,22 +120,29 @@ class KunenaDiscord extends KunenaActivity
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
         $request = new Http();
-        $request->post($this->webhook, $hookObject);
+        $response = $request->post($this->webhook, $hookObject);
+        if ($response->code != 204) {
+            $body = json_decode($response->body);
+            $this->app->enqueueMessage(JText::_('PLG_KUNENA_DISCORD_ERROR') . ' ' . $body->message, 'Warning');
+        }
     }
 
     /**
-     * @param $message
+     * @param KunenaForumMessage $message
      * @param $translatedMsg
-     *
-     *
-     * @since version
      */
     private function _prepareAndSend($message, $translatedMsg)
     {
         if ($this->_checkPermissions($message)) {
             $pushMessage = sprintf($translatedMsg, $message->subject);
-            $url = htmlspecialchars_decode(JUri::base() . mb_substr($message->getPermaUrl(), 1) . '#' . $message->id);
-            $this->_send_message($pushMessage, $url, $message);
+            try {
+                $url = htmlspecialchars_decode(JUri::base()
+                    . mb_substr($message->getPermaUrl(), 1)
+                    . '#' . $message->id);
+                $this->_send_message($pushMessage, $url, $message);
+            } catch (Exception $e) {
+                $this->app->enqueueMessage(JText::_('PLG_KUNENA_DISCORD_ERROR'), 'error');
+            }
         }
     }
 }
