@@ -13,4 +13,4 @@ See Discord [documentation](https://support.discordapp.com/hc/en-us/articles/228
 
 ###### LICENSE
 
-[GNU General Public License v3 or later](https://www.gnu.org/copyleft/gpl.html)
+[GNU General Public License v2 or later](https://www.gnu.org/copyleft/gpl.html)
