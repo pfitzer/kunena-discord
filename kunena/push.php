@@ -120,7 +120,7 @@ class KunenaDiscord extends KunenaActivity
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
         $request = new Http();
-        $response = $request->post($this->webhook, $hookObject);
+        $response = $request->post($this->webhook, utf8_encode($hookObject), ['Content-Type' => 'application/json']);
         if ($response->code != 204) {
             $body = json_decode($response->body);
             $this->app->enqueueMessage(JText::_('PLG_KUNENA_DISCORD_ERROR') . ' ' . $body->message, 'Warning');
