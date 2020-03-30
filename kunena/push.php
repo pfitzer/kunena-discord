@@ -136,9 +136,7 @@ class KunenaDiscord extends KunenaActivity
         if ($this->_checkPermissions($message)) {
             $pushMessage = sprintf($translatedMsg, $message->subject);
             try {
-                $url = htmlspecialchars_decode(JUri::base()
-                    . mb_substr($message->getPermaUrl(), 1)
-                    . '#' . $message->id);
+                $url = JUri::base() . mb_substr($message->getUrl(), 1);
                 $this->_send_message($pushMessage, $url, $message);
             } catch (Exception $e) {
                 $this->app->enqueueMessage(JText::_('PLG_KUNENA_DISCORD_ERROR'), 'error');
