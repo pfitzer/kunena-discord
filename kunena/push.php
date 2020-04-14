@@ -37,13 +37,19 @@ class KunenaDiscord extends KunenaActivity
     private $app;
 
     /**
+     * @var string
+     */
+    private $domain;
+
+    /**
      * KunenaDiscord constructor.
      * @param $webhook
      * @throws Exception
      */
-    public function __construct($webhook)
+    public function __construct($webhook, $domain)
     {
         $this->webhook = $webhook;
+        $this->domain = $domain;
         $this->lang = JFactory::getLanguage();
         $this->lang->load('plg_kunena_discord', JPATH_ADMINISTRATOR);
         $this->app = JFactory::getApplication();
@@ -136,7 +142,11 @@ class KunenaDiscord extends KunenaActivity
         if ($this->_checkPermissions($message)) {
             $pushMessage = sprintf($translatedMsg, $message->subject);
             try {
-                $url = JUri::base() . mb_substr($message->getUrl(), 1);
+                if ($this->domain) {
+                    $url = $this->domain . $message->getUrl();
+                } else {
+                    $url = JUri::base() . mb_substr($message->getUrl(), 1);
+                }
                 $this->_send_message($pushMessage, $url, $message);
             } catch (Exception $e) {
                 $this->app->enqueueMessage(JText::_('PLG_KUNENA_DISCORD_ERROR'), 'error');

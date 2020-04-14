@@ -39,6 +39,7 @@ class plgKunenaDiscord extends CMSPlugin
     {
         parent::__construct($subject, $config);
         $this->webhook = $this->params->get('webhook');
+        $this->domain = $this->params->get('domain');
         if (!$this->webhook) {
             throw new InvalidArgumentException("Webhook can`t be null. Please donfigure a webhhok.");
         }
@@ -53,7 +54,7 @@ class plgKunenaDiscord extends CMSPlugin
     public function onKunenaGetActivity()
     {
         require_once __DIR__ . "/push.php";
-        return new KunenaDiscord($this->webhook);
+        return new KunenaDiscord($this->webhook, $this->domain);
     }
 
 }
