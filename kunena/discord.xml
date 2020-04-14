@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" version="3.8" group="kunena" method="upgrade">
-	<name>Kunena Discord</name>
-	<creationDate>13.11.19</creationDate>
-	<author>Michael Pfister</author>
-	<authorEmail>michael@mp-development.de</authorEmail>
-	<authorUrl>http://www.mp-development.de</authorUrl>
-	<copyright>Michael Pfister</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<version>1.1.3</version>
-	<description>PLG_KUNENA_DISCORD_XML_DESCRIPTION</description>
+    <name>Kunena Discord</name>
+    <creationDate>13.11.19</creationDate>
+    <author>Michael Pfister</author>
+    <authorEmail>michael@mp-development.de</authorEmail>
+    <authorUrl>http://www.mp-development.de</authorUrl>
+    <copyright>Michael Pfister</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <version>1.2.0</version>
+    <description>PLG_KUNENA_DISCORD_XML_DESCRIPTION</description>
 
-	<!-- Scripts to run on installation -->
-	<scriptfile>script.php</scriptfile>
+    <!-- Scripts to run on installation -->
+    <scriptfile>script.php</scriptfile>
 
-	<!-- Language files -->
-	<languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.plg_kunena_discord.ini</language>
-		<language tag="en-GB">en-GB/en-GB.plg_kunena_discord.sys.ini</language>
-		<language tag="de-DE">de-DE/de-DE.plg_kunena_discord.ini</language>
-		<language tag="de-DE">de-DE/de-DE.plg_kunena_discord.sys.ini</language>
-		<language tag="es-ES">es-ES/es-ES.plg_kunena_discord.ini</language>
-		<language tag="es-ES">es-ES/es-ES.plg_kunena_discord.sys.ini</language>
-	</languages>
+    <!-- Language files -->
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_kunena_discord.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_kunena_discord.sys.ini</language>
+        <language tag="de-DE">de-DE/de-DE.plg_kunena_discord.ini</language>
+        <language tag="de-DE">de-DE/de-DE.plg_kunena_discord.sys.ini</language>
+        <language tag="es-ES">es-ES/es-ES.plg_kunena_discord.ini</language>
+        <language tag="es-ES">es-ES/es-ES.plg_kunena_discord.sys.ini</language>
+    </languages>
 
-	<!-- Plugin files -->
-	<files>
-		<filename plugin="discord">discord.php</filename>
-		<filename>push.php</filename>
-		<filename>script.php</filename>
-		<filename>index.html</filename>
-		<folder>language</folder>
-	</files>
+    <!-- Plugin files -->
+    <files>
+        <filename plugin="discord">discord.php</filename>
+        <filename>push.php</filename>
+        <filename>script.php</filename>
+        <filename>index.html</filename>
+        <folder>language</folder>
+    </files>
 
-	<!-- Config parameter -->
-	<config>
-		<fields name="params">
-			<fieldset name="basic">
-				<field
-					name="webhook"
-					type="url"
-					default=""
-					label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
-					description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
-				/>
-			</fieldset>
-		</fields>
-	</config>
-	<updateservers>
-		<server type="extension" priority="1" name="Kunena-Discord Update Site">https://raw.githubusercontent.com/pfitzer/kunena-discord/master/plg_kunenadiscord.xml</server>
-	</updateservers>
+    <!-- Config parameter -->
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="webhook"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="domain"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBSITEURL"
+                        description="PLG_KUNENA_WEBSITEURL_DESCRIPTION"
+						hint="https://yoursite.com"
+                />
+            </fieldset>
+        </fields>
+    </config>
+    <updateservers>
+        <server type="extension" priority="1" name="Kunena-Discord Update Site">
+            https://raw.githubusercontent.com/pfitzer/kunena-discord/master/plg_kunenadiscord.xml
+        </server>
+    </updateservers>
 </extension>
