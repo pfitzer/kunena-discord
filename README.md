@@ -11,6 +11,7 @@ See Discord [documentation](https://support.discordapp.com/hc/en-us/articles/228
 * englisch
 * german
 * spanish
+* french - thx to [yohji79](https://github.com/yohji79)
 
 ###### LICENSE
 
