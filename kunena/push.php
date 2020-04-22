@@ -109,7 +109,7 @@ class KunenaDiscord extends KunenaActivity
      */
     private function _send_message($pushMessage, $url, $message)
     {
-        $content = '**' . $pushMessage . '** *' . $message->subject . '* [Link](' . $url . ')';
+        $content = '*' . $pushMessage . '* **' . $message->subject . '** [Link](' . $url . ')';
         $hookObject = json_encode([
             /*
              * The general "message" shown above your embeds
