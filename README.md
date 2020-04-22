@@ -20,7 +20,8 @@ See Discord [documentation](https://support.discordapp.com/hc/en-us/articles/228
 
 [GNU General Public License v2 or later](https://www.gnu.org/copyleft/gpl.html)
 
-#### Changelog
+Changelog
+---------
 
 1.3.1 (2020-04-22)
 ------------------
