@@ -16,10 +16,6 @@ See Discord [documentation](https://support.discordapp.com/hc/en-us/articles/228
 * spanish
 * french - thx to [yohji79](https://github.com/yohji79)
 
-###### LICENSE
-
-[GNU General Public License v2 or later](https://www.gnu.org/copyleft/gpl.html)
-
 Changelog
 ---------
 
