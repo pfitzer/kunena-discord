@@ -47,7 +47,7 @@
                         hint="https://yoursite.com"
                 />
             </fieldset>
-            <fieldset name="webhooks" addfieldpath="/plugins/kunena/discord/fields">
+            <fieldset name="webhooks" label="PLG_KUNENA_FIELDSET_WEBHOOKS" addfieldpath="/plugins/kunena/discord/fields">
                 <field
                         name="webhook1"
                         type="url"
@@ -58,8 +58,8 @@
                 <field
                         name="webhookcats1"
                         type="KCategory"
-                        label="COM_FISHINGLOG_CATEGORY"
-                        description="COM_FISHINGLOG_CATEGORY_DESC"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
                         multiple="true"
                 />
                 <field
@@ -70,11 +70,25 @@
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
                 />
                 <field
+                        name="webhookcats2"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
+                />
+                <field
                         name="webhook3"
                         type="url"
                         default=""
                         label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhookcats3"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
                 />
                 <field
                         name="webhook4"
@@ -84,11 +98,25 @@
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
                 />
                 <field
+                        name="webhookcats4"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
+                />
+                <field
                         name="webhook5"
                         type="url"
                         default=""
                         label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhookcats5"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
                 />
                 <field
                         name="webhook6"
@@ -98,11 +126,25 @@
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
                 />
                 <field
+                        name="webhookcats6"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
+                />
+                <field
                         name="webhook7"
                         type="url"
                         default=""
                         label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhookcats7"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
                 />
                 <field
                         name="webhook8"
@@ -112,6 +154,13 @@
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
                 />
                 <field
+                        name="webhookcats8"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
+                />
+                <field
                         name="webhook9"
                         type="url"
                         default=""
@@ -119,11 +168,25 @@
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
                 />
                 <field
+                        name="webhookcats9"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
+                />
+                <field
                         name="webhook10"
                         type="url"
                         default=""
                         label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhookcats10"
+                        type="KCategory"
+                        label="PLG_KUNENA_DISCORD_CATEGORY_LABEL"
+                        description="PLG_KUNENA_DISCORD_CATEGORY_DESCRIPTION"
+                        multiple="true"
                 />
             </fieldset>
         </fields>

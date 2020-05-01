@@ -61,7 +61,12 @@ class plgKunenaDisocord
 	 *
 	 * @return  boolean  True on success
 	 */
-	public function update(JAdapterInstance $adapter) {}
+	public function update(JAdapterInstance $adapter) {
+	    echo "You have now the ability to set 10 different webhooks and choose the suitable Kunena categories.\n";
+	    echo "\n";
+	    echo "<b>Update from version 1.x</b>\n";
+        echo "If you update from version prior to 2.0.0, please go to the plugin settings and set the Discord webhook url again!\n";
+    }
 
 	/**
 	 * Called on uninstallation
