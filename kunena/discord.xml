@@ -39,19 +39,91 @@
         <fields name="params">
             <fieldset name="basic">
                 <field
-                        name="webhook"
+                        name="domain"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBSITEURL"
+                        description="PLG_KUNENA_WEBSITEURL_DESCRIPTION"
+                        hint="https://yoursite.com"
+                />
+            </fieldset>
+            <fieldset name="webhooks" addfieldpath="/plugins/kunena/discord/fields">
+                <field
+                        name="webhook1"
                         type="url"
                         default=""
                         label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
                         description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
                 />
                 <field
-                        name="domain"
+                        name="webhookcats1"
+                        type="KCategory"
+                        label="COM_FISHINGLOG_CATEGORY"
+                        description="COM_FISHINGLOG_CATEGORY_DESC"
+                        multiple="true"
+                />
+                <field
+                        name="webhook2"
                         type="url"
                         default=""
-                        label="PLG_KUNENA_DISCORD_WEBSITEURL"
-                        description="PLG_KUNENA_WEBSITEURL_DESCRIPTION"
-						hint="https://yoursite.com"
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhook3"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhook4"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhook5"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhook6"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhook7"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhook8"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhook9"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
+                />
+                <field
+                        name="webhook10"
+                        type="url"
+                        default=""
+                        label="PLG_KUNENA_DISCORD_WEBHOOK_LABEL"
+                        description="PLG_KUNENA_DISCORD_WEBHOOK_DESCRIPTION"
                 />
             </fieldset>
         </fields>
