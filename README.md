@@ -6,7 +6,8 @@ Kunena Discord
 [![release](https://img.shields.io/github/v/release/pfitzer/kunena-discord.svg)](https://github.com/pfitzer/kunena-discord/releases)
 [![license](https://img.shields.io/github/license/pfitzer/kunena-discord)](https://github.com/pfitzer/kunena-discord/blob/master/LICENSE)
 
-A [Kunena](https://www.kunena.org/) plugin to send new posts to a Discord channel.
+A [Kunena](https://www.kunena.org/) plugin to send new posts to a Discord channel. You can set up to 10 Discord channels and
+choose from your Kunena categories on which channel should be post.
 
 See Discord [documentation](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks) on how to use webhooks.
 
@@ -16,8 +17,17 @@ See Discord [documentation](https://support.discordapp.com/hc/en-us/articles/228
 * spanish
 * french - thx to [yohji79](https://github.com/yohji79)
 
+##### Update from 1.x
+If you update from version 1.x all your settings are lost. Please go to plugin settings page and configure it again.
+
 Changelog
 ---------
+
+2.0.0 (2020-05-03)
+------------------
+- Multiple Discord channels. [Michael Pfister]
+- Choose Kunena categories for a channel. [Michael Pfister]
+
 
 1.3.1 (2020-04-22)
 ------------------
