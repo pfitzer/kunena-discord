@@ -24,7 +24,7 @@ class KunenaDiscord extends KunenaActivity
     /**
      * @var null
      */
-    private $webhook = null;
+    private $webhooks = null;
 
     /**
      * @var \Joomla\CMS\Language\Language
@@ -46,9 +46,9 @@ class KunenaDiscord extends KunenaActivity
      * @param $webhook
      * @throws Exception
      */
-    public function __construct($webhook, $domain)
+    public function __construct(array $webhooks, $domain)
     {
-        $this->webhook = $webhook;
+        $this->webhooks = $webhooks;
         $this->domain = $domain;
         $this->lang = JFactory::getLanguage();
         $this->lang->load('plg_kunena_discord', JPATH_ADMINISTRATOR);
@@ -107,7 +107,7 @@ class KunenaDiscord extends KunenaActivity
      * @param $url
      * @param KunenaForumMessage $message
      */
-    private function _send_message($pushMessage, $url, $message)
+    private function _send_message($pushMessage, $url, $message, $webhook)
     {
         $content = '*' . $pushMessage . '* **' . $message->subject . '** [Link](' . $url . ')';
         $hookObject = json_encode([
@@ -126,7 +126,7 @@ class KunenaDiscord extends KunenaActivity
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
         $request = new Http();
-        $response = $request->post($this->webhook, $hookObject, ['Content-Type' => 'application/json']);
+        $response = $request->post($webhook, $hookObject, ['Content-Type' => 'application/json']);
         if ($response->code != 204) {
             $body = json_decode($response->body);
             $this->app->enqueueMessage(JText::_('PLG_KUNENA_DISCORD_ERROR') . ' ' . $body->message, 'Warning');
@@ -147,7 +147,15 @@ class KunenaDiscord extends KunenaActivity
                 } else {
                     $url = JUri::base() . mb_substr($message->getUrl(), 1);
                 }
-                $this->_send_message($pushMessage, $url, $message);
+                foreach ($this->webhooks as $hook) {
+                    if (!is_array($hook[1])) {
+                        $this->_send_message($pushMessage, $url, $message, $hook[0]);
+                    } else {
+                        if (in_array($message->catid, $hook[1])) {
+                            $this->_send_message($pushMessage, $url, $message, $hook[0]);
+                        }
+                    }
+                }
             } catch (Exception $e) {
                 $this->app->enqueueMessage(JText::_('PLG_KUNENA_DISCORD_ERROR'), 'error');
             }

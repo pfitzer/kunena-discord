@@ -16,57 +16,54 @@ defined('_JEXEC') or die;
  * @package   kunena-discord
  * @since     1.0.0
  */
-class plgKunenaDisocord
+class plgKunenaDiscordInstallerScript
 {
 	/**
 	 * Constructor
 	 *
-	 * @param   JAdapterInstance  $adapter  The object responsible for running this script
 	 */
-	public function __construct(JAdapterInstance $adapter) {}
+	public function __construct($parent) {}
 
 	/**
 	 * Called before any type of action
 	 *
 	 * @param   string  $route  Which action is happening (install|uninstall|discover_install|update)
-	 * @param   JAdapterInstance  $adapter  The object responsible for running this script
-	 *
+     *
 	 * @return  boolean  True on success
 	 */
-	public function preflight($route, JAdapterInstance $adapter) {}
+	public function preflight($route, $parent) {}
 
 	/**
 	 * Called after any type of action
 	 *
 	 * @param   string  $route  Which action is happening (install|uninstall|discover_install|update)
-	 * @param   JAdapterInstance  $adapter  The object responsible for running this script
 	 *
 	 * @return  boolean  True on success
 	 */
-	public function postflight($route, JAdapterInstance $adapter) {}
+	public function postflight($route, $parent) {}
 
 	/**
 	 * Called on installation
 	 *
-	 * @param   JAdapterInstance  $adapter  The object responsible for running this script
 	 *
 	 * @return  boolean  True on success
 	 */
-	public function install(JAdapterInstance $adapter) {}
+	public function install($parent) {}
 
 	/**
 	 * Called on update
 	 *
-	 * @param   JAdapterInstance  $adapter  The object responsible for running this script
 	 *
 	 * @return  boolean  True on success
 	 */
-	public function update(JAdapterInstance $adapter) {}
+	public function update($parent) {
+	    echo "<p><b>Update from version 1.x</b></p>";
+        echo "<p>If you update from version prior to 2.0.0, please go to the plugin settings and set the Discord webhook url again!</p>";
+    }
 
 	/**
 	 * Called on uninstallation
 	 *
-	 * @param   JAdapterInstance  $adapter  The object responsible for running this script
 	 */
-	public function uninstall(JAdapterInstance $adapter) {}
+	public function uninstall($parent) {}
 }
