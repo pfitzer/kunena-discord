@@ -57,8 +57,8 @@ class plgKunenaDiscordInstallerScript
 	 * @return  boolean  True on success
 	 */
 	public function update($parent) {
-	    echo "<b>Update from version 1.x</b>\n";
-        echo "If you update from version prior to 2.0.0, please go to the plugin settings and set the Discord webhook url again!\n";
+	    echo "<p><b>Update from version 1.x</b></p>";
+        echo "<p>If you update from version prior to 2.0.0, please go to the plugin settings and set the Discord webhook url again!</p>";
     }
 
 	/**
