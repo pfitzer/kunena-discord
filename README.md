@@ -20,7 +20,7 @@ See Discord [documentation](https://support.discordapp.com/hc/en-us/articles/228
 ##### Update from 1.x
 If you update from version 1.x all your settings are lost. Please go to plugin settings page and configure it again.
 
-[!coffee](https://cdn.buymeacoffee.com/buttons/lato-orange.png)](https://www.buymeacoffee.com/pfitzer)
+[![coffee](https://cdn.buymeacoffee.com/buttons/lato-orange.png)](https://www.buymeacoffee.com/pfitzer)
 
 Changelog
 ---------
