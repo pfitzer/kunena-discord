@@ -16,11 +16,3 @@ Welcome to Kunena-Discord's documentation!
    overview
 
    usage
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
