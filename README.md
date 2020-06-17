@@ -4,9 +4,9 @@
 Kunena Discord
 --------------
 [![release](https://img.shields.io/github/v/release/pfitzer/kunena-discord.svg)](https://github.com/pfitzer/kunena-discord/releases)
+[![GitHub All Releases](https://img.shields.io/github/downloads/pfitzer/kunena-discord/total.svg)](https://github.com/pfitzer/kunena-discord/releases)
 [![license](https://img.shields.io/github/license/pfitzer/kunena-discord)](https://github.com/pfitzer/kunena-discord/blob/master/LICENSE)
 [![Documentation Status](https://readthedocs.org/projects/kunena-discord/badge/?version=latest)](https://kunena-discord.readthedocs.io/en/latest/?badge=latest)
-
 
 A [Kunena](https://www.kunena.org/) plugin to send new posts to a Discord channel. You can set up to 10 Discord channels and
 choose from your Kunena categories on which channel should be post.

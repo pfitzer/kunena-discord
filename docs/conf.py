@@ -31,6 +31,7 @@ release = '2.0.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+	"sphinxcontrib.phpdomain"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -56,10 +57,10 @@ html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
     
 # Set up PHP syntax highlights
-# from sphinx.highlighting import lexers
-# from pygments.lexers.web import PhpLexer
-# lexers["php"] = PhpLexer(startinline=True, linenos=1)
-# lexers["php-annotations"] = PhpLexer(startinline=True, linenos=1)
-# primary_domain = "php"
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+lexers["php"] = PhpLexer(startinline=True, linenos=1)
+lexers["php-annotations"] = PhpLexer(startinline=True, linenos=1)
+primary_domain = "php"
 
 

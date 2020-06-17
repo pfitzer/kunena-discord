@@ -40,9 +40,6 @@ class plgKunenaDiscord extends CMSPlugin
         parent::__construct($subject, $config);
         $this->setWebhooks();
         $this->domain = $this->params->get('domain');
-//        if (!$this->webhook) {
-//            throw new InvalidArgumentException("Webhook can`t be null. Please donfigure a webhhok.");
-//        }
     }
 
     /**

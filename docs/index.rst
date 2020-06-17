@@ -16,3 +16,5 @@ Welcome to Kunena-Discord's documentation!
    overview
 
    usage
+
+   code
