@@ -143,9 +143,9 @@ class KunenaDiscord extends KunenaActivity
             $pushMessage = sprintf($translatedMsg, $message->subject);
             try {
                 if ($this->domain) {
-                    $url = $this->domain . $message->getUrl();
+                    $url = $this->domain . $message->getUrl() . '#' . $message->id;
                 } else {
-                    $url = JUri::base() . mb_substr($message->getUrl(), 1);
+                    $url = JUri::base() . mb_substr($message->getUrl() . '#' . $message->id, 1);
                 }
                 foreach ($this->webhooks as $hook) {
                     if (!is_array($hook[1])) {
